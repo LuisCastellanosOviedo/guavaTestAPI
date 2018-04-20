@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ public class GuavaTdd {
     Car carTest;
     Car carTest2;
     List<Car> carList;
+    List<String> colores;
 
     @Before
     public void setUp() throws Exception {
@@ -28,10 +30,15 @@ public class GuavaTdd {
         carList.add(carTest);
         carList.add(carTest2);
         carList.add(null);
+
+        colores= Arrays.asList("azul","red");
     }
 
 
-
+    @Test
+    public void joinStrings() {
+        Assert.assertEquals("azul,red",GuavaApi.joinString(colores));
+    }
 
     @Test
     public void testInitCollectiions() {

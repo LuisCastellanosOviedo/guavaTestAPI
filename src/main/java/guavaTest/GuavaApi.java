@@ -1,9 +1,6 @@
 package guavaTest;
 
-import com.google.common.base.Function;
-import com.google.common.base.Functions;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicates;
+import com.google.common.base.*;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -51,6 +48,11 @@ public class GuavaApi {
     public static List<Boolean> anyHasResColor(List<Car> carList){
         return Lists.newArrayList(Collections2.transform(carList,Functions.compose(FeatureFunctionGuava.hasRedColor()
                 ,FeatureFunctionGuava.convertTOCamioneta())));
+    }
+
+
+    public static String joinString(List<String> colores) {
+        return Joiner.on(",").join(colores);
     }
 
 }
