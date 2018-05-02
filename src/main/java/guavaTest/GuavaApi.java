@@ -20,6 +20,9 @@ public class GuavaApi {
         return Maps.newHashMap();
     }
 
+    public void testRebase(){
+
+    }
 
     public static void addElementToMap(Map<String, Car> map, String key, Car carTest) {
         map.put(key,carTest);
