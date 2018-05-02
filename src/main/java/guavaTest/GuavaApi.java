@@ -16,8 +16,6 @@ public class GuavaApi {
 
 
 
-
-
     public static Map<String,Car> createMap(){
         for (int i = 0; i <50 ; i++) {
             System.out.println("test rebase ");
@@ -25,6 +23,9 @@ public class GuavaApi {
         return Maps.newHashMap();
     }
 
+    public void testRebase(){
+
+    }
 
     public static void addElementToMap(Map<String, Car> map, String key, Car carTest) {
         map.put(key,carTest);
