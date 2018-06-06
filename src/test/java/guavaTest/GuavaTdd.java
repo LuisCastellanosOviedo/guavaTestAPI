@@ -103,4 +103,10 @@ public class GuavaTdd {
         Assert.assertEquals(2, GuavaApi.anyHasResColor(GuavaApi.filterNullList(carList)).size());
         Assert.assertThat(GuavaApi.anyHasResColor(GuavaApi.filterNullList(carList)),contains(false,true));
     }
+
+    @Test
+    public void listIsNull() {
+        List<String> colors=null;
+        GuavaApi.listIsNull(colors);
+    }
 }

@@ -1,15 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="guavaTest.GuavaTdd" tests="9" skipped="0" failures="0" errors="0" timestamp="2018-03-27T20:16:30" hostname="CO-IT01610" time="0.025">
+<testsuite name="guavaTest.GuavaTdd" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-06-05T19:03:30" hostname="CO-IT01610" time="0.043">
   <properties/>
-  <testcase name="testFilterWithPreconditions" classname="guavaTest.GuavaTdd" time="0.004"/>
-  <testcase name="filterlist" classname="guavaTest.GuavaTdd" time="0.009"/>
-  <testcase name="testAddCarToHashmap" classname="guavaTest.GuavaTdd" time="0.006"/>
+  <testcase name="testFilterWithPreconditions" classname="guavaTest.GuavaTdd" time="0.005"/>
+  <testcase name="filterlist" classname="guavaTest.GuavaTdd" time="0.008"/>
+  <testcase name="testAddCarToHashmap" classname="guavaTest.GuavaTdd" time="0.01"/>
   <testcase name="testConvertToCamioneta" classname="guavaTest.GuavaTdd" time="0.002"/>
-  <testcase name="testInitCollectiions" classname="guavaTest.GuavaTdd" time="0.0"/>
+  <testcase name="joinStrings" classname="guavaTest.GuavaTdd" time="0.001"/>
+  <testcase name="listIsNull" classname="guavaTest.GuavaTdd" time="0.0"/>
+  <testcase name="testInitCollectiions" classname="guavaTest.GuavaTdd" time="0.006"/>
   <testcase name="testAllCarsHasColors" classname="guavaTest.GuavaTdd" time="0.002"/>
-  <testcase name="testCustomPredicate" classname="guavaTest.GuavaTdd" time="0.0"/>
-  <testcase name="testListNotNull" classname="guavaTest.GuavaTdd" time="0.001"/>
+  <testcase name="testComposeFunctionsToKnowIFAnyhasRedColor" classname="guavaTest.GuavaTdd" time="0.007"/>
+  <testcase name="testCustomPredicate" classname="guavaTest.GuavaTdd" time="0.001"/>
+  <testcase name="testListNotNull" classname="guavaTest.GuavaTdd" time="0.0"/>
   <testcase name="testPrecoditionsOk" classname="guavaTest.GuavaTdd" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
+  <system-out><![CDATA[test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+test rebase 
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

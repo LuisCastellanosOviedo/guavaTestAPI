@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="guavaOptional.GuavaOptionalTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-06-05T19:03:30" hostname="CO-IT01610" time="0.006">
+  <properties/>
+  <testcase name="testIsAbsent" classname="guavaOptional.GuavaOptionalTest" time="0.004"/>
+  <testcase name="testCarNotExist" classname="guavaOptional.GuavaOptionalTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

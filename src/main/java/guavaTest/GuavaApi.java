@@ -61,4 +61,8 @@ public class GuavaApi {
         return Joiner.on(",").join(colores);
     }
 
+    public static boolean listIsNull(List<String> colors){
+        return colors==null ?true:Iterables.isEmpty(colors);
+    }
+
 }
