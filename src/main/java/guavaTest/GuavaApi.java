@@ -44,7 +44,12 @@ public class GuavaApi {
     }
 
     public static boolean allCarsHasColor(List<Car> carList){
-        return Iterables.all(carList,FeaturePredicates.AllCarsHasColor());
+        return allCarshasColorGeneric(carList,FeaturePredicates.allCarsHasColor());
+    }
+
+
+    public static boolean allCarshasColorGeneric(List<Car> carList,Predicate carPredicate){
+        return Iterables.all(carList,carPredicate);
     }
 
     public static List<Camioneta> convertToCamioneta(List<Car> carList){

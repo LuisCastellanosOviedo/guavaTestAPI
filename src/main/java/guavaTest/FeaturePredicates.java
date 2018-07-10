@@ -16,7 +16,7 @@ public class FeaturePredicates {
     }
 
 
-    public static Predicate<Car> AllCarsHasColor(){
+    public static Predicate<Car> allCarsHasColor(){
         return new Predicate<Car>() {
             @Override
             public boolean apply(Car input) {
