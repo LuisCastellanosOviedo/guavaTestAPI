@@ -11,6 +11,9 @@ import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import com.google.common.collect.*;
 
@@ -71,6 +74,13 @@ public class GuavaApiBookTest {
         };
     }
 
+
+    @Test
+    public void testInmutableList() {
+       List<String> inmutableListJDK = Collections.unmodifiableList(Arrays.asList("one","two","three"));
+       Assert.assertThat(inmutableListJDK.size(),is(3));
+
+    }
 
     @Test
     public void testFluentIterableTransformFunctionHardCoded() {

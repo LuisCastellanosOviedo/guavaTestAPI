@@ -43,7 +43,7 @@ public class GuavaOptionalTest {
     @Test
     public void testMayBeNullButIsValid() {
         Assert.assertTrue(guavaOptionalAPI.mayReturnNull("val").isPresent());
-        Assert.assertEquals(guavaOptionalAPI.mayReturnNull("val").get(),"val");
+        Assert.assertEquals(guavaOptionalAPI.mayReturnNull("val").orNull(),"val");
     }
 
 
