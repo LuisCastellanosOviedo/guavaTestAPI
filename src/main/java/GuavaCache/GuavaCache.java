@@ -1,10 +1,15 @@
 package GuavaCache;
 
+import com.google.common.base.Function;
 import com.google.common.base.Ticker;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.FluentIterable;
+import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -42,7 +47,13 @@ public class GuavaCache {
         return tradeAccountCacheVer3;
     }
 
-    private  static LoadingCache<String,List<TradeAccount>>  getCacheVer4(){
+
+
+
+
+
+
+    private  static  LoadingCache<String,List<TradeAccount>>  getCacheVer4(){
         if(tradeAccountCacheVer4 == null){
             createCacheVer4();
         }
@@ -52,16 +63,30 @@ public class GuavaCache {
 
     public static List<TradeAccount> ReadData(String id) throws ExecutionException {
         return getCacheVer4().get(id);
+
+
+    }
+    public static List<TradeAccount> ReadAndFormatData(String id) throws ExecutionException {
+
+
+        return Lists.transform(getCacheVer4().get(id),new Function<TradeAccount,
+                TradeAccount>() {
+            @Override
+            public TradeAccount apply(TradeAccount input) {
+                return input.toBuilder().build();
+            }
+        });
     }
 
-    public static List<TradeAccount> FormatData(String id ) throws ExecutionException {
-        return ReadData(id).;
+
+    public static void  purgeCache( ) throws ExecutionException {
+         getCacheVer4().cleanUp();
     }
 
 
     private static void createCacheVer4() {
         tradeAccountCacheVer4 = CacheBuilder.newBuilder()
-                .expireAfterWrite(20L,TimeUnit.MINUTES)
+                .expireAfterWrite(1L,TimeUnit.DAYS)
                 .build(new CacheLoader<String, List<TradeAccount>>() {
                     @Override
                     public List<TradeAccount> load(String key) throws Exception {
@@ -70,6 +95,12 @@ public class GuavaCache {
                 });
 
     }
+
+
+
+
+
+
 
     private static  void createCacheVer1Size() {
         tradeAccountCache = CacheBuilder.newBuilder()

@@ -61,6 +61,10 @@ public class GuavaApi {
                 ,FeatureFunctionGuava.convertTOCamioneta())));
     }
 
+    public static List<Car> convertToCar(List<Camioneta> camList){
+        return Lists.newArrayList(Collections2.transform(camList, FeatureFunctionGuava.convertTOCar()));
+    }
+
 
     public static String joinString(List<String> colores) {
         return Joiner.on(",").join(colores);

@@ -99,6 +99,13 @@ public class GuavaTdd {
 
 
     @Test
+    public void testConvertToCar() {
+        Assert.assertNotNull(GuavaApi.convertToCar(Arrays.asList(new Camioneta())));
+        Assert.assertEquals(GuavaApi.convertToCar(Arrays.asList(new Camioneta())).size(),1);
+        Assert.assertNull(GuavaApi.convertToCar(Arrays.asList(new Camioneta())).get(0).getColor());
+    }
+
+    @Test
     public void testComposeFunctionsToKnowIFAnyhasRedColor() {
         Assert.assertEquals(2, GuavaApi.anyHasResColor(GuavaApi.filterNullList(carList)).size());
         Assert.assertThat(GuavaApi.anyHasResColor(GuavaApi.filterNullList(carList)),contains(false,true));

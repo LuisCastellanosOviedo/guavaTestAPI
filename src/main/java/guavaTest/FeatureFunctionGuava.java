@@ -25,4 +25,18 @@ public class FeatureFunctionGuava {
             }
         };
     }
+
+    public static Function<Camioneta, Car> convertTOCar() {
+        return new Function <Camioneta,Car>() {
+            @Override
+            public Car apply(Camioneta input) {
+                Car car = new Car();
+                car.setColor(input.getColor());
+                return car;
+            }
+        };
+    }
+
+
+
 }

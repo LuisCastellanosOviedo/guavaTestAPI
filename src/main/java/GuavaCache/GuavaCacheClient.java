@@ -8,8 +8,9 @@ public class GuavaCacheClient {
 
 
     public void useCache() throws ExecutionException {
-        List<TradeAccount> tradeAccounts  = GuavaCache.ReadData("1");
+        List<TradeAccount> tradeAccounts  = GuavaCache.ReadAndFormatData("1");
         tradeAccounts.stream().forEach(a -> a.setBalance(55));
-        List<TradeAccount> tradeAccounts1  = GuavaCache.FormatData("1");
+        tradeAccounts.add(TradeAccount.builder().build());
+        List<TradeAccount> tradeAccounts1  = GuavaCache.ReadData("1");
     }
 }
