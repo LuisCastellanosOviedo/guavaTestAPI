@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="guavaOptional.GuavaOptionalTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2018-07-04T22:32:08" hostname="CO-IT01610" time="0.005">
+<testsuite name="guavaOptional.GuavaOptionalTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2018-10-18T17:01:17" hostname="CO-IT01610" time="0.004">
   <properties/>
-  <testcase name="testMayBeNullButIsValid" classname="guavaOptional.GuavaOptionalTest" time="0.002"/>
+  <testcase name="testMayBeNullButIsValid" classname="guavaOptional.GuavaOptionalTest" time="0.003"/>
   <testcase name="testIsAbsent" classname="guavaOptional.GuavaOptionalTest" time="0.001"/>
-  <testcase name="testMayBeNull" classname="guavaOptional.GuavaOptionalTest" time="0.001"/>
+  <testcase name="testMayBeNull" classname="guavaOptional.GuavaOptionalTest" time="0.0"/>
   <testcase name="testCarExist" classname="guavaOptional.GuavaOptionalTest" time="0.0"/>
-  <testcase name="testCarNotExist" classname="guavaOptional.GuavaOptionalTest" time="0.001"/>
+  <testcase name="testCarNotExist" classname="guavaOptional.GuavaOptionalTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
