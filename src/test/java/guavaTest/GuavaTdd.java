@@ -137,7 +137,7 @@ public class GuavaTdd {
 
     @Test
     public void testMapToList() {
-        Map res = GuavaApi.convertToMap(camionetas, new Function<Camioneta, String>() {
+        Map<String, Camioneta>  res = GuavaApi.convertToMap(camionetas, new Function<Camioneta, String>() {
             @Override
             public String apply(Camioneta input) {
                 return input.getColor();
@@ -145,5 +145,30 @@ public class GuavaTdd {
         });
 
         Assert.assertNotNull(res);
+        Assert.assertEquals(res.size(),3);
+        Assert.assertNotNull(res.get("rojoUnico"));
+        Assert.assertEquals(res.get("rojoUnico").getColor(),"rojoUnico");
+    }
+
+    @Test
+    public void testtransformMap() {
+        Map<String, Camioneta>  res = GuavaApi.convertToMap(camionetas, new Function<Camioneta, String>() {
+            @Override
+            public String apply(Camioneta input) {
+                return input.getColor();
+            }
+        });
+
+        Map<String,String> restransformed = GuavaApi.transformmap(res, new Function<Camioneta, String>() {
+            @Override
+            public String apply(Camioneta input) {
+                return input.getColor();
+            }
+        });
+
+        Assert.assertNotNull(restransformed);
+        Assert.assertEquals(restransformed.get("rojoUnico"),"rojoUnico");
+        Assert.assertEquals(restransformed.size(),3);
+
     }
 }

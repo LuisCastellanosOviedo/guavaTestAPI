@@ -76,4 +76,8 @@ public class GuavaApi {
         return Maps.uniqueIndex(camionetas.iterator(),createKey);
     }
 
+    public static Map<String,String> transformmap(Map<String,Camioneta> camionetasMap,Function<Camioneta,String> camionetaToString){
+        return Maps.transformValues(camionetasMap,camionetaToString);
+    }
+
 }
