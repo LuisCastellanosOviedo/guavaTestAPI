@@ -1,10 +1,7 @@
 package guavaTest;
 
 import com.google.common.base.*;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.*;
 
 import java.util.List;
 import java.util.Map;
@@ -72,6 +69,11 @@ public class GuavaApi {
 
     public static boolean listIsNull(List<String> colors){
         return colors==null ?true:Iterables.isEmpty(colors);
+    }
+
+
+    public static Map<String, Camioneta> convertToMap(List<Camioneta> camionetas,Function<Camioneta,String> createKey){
+        return Maps.uniqueIndex(camionetas.iterator(),createKey);
     }
 
 }

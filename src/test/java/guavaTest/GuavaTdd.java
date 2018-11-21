@@ -1,11 +1,13 @@
 package guavaTest;
 
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +22,12 @@ public class GuavaTdd {
     List<Car> carList;
     List<String> colores;
 
+
+    List<Camioneta> camionetas = new ArrayList<>();
+
     @Before
     public void setUp() throws Exception {
-        carTest= new Car();
+        carTest = new Car();
         carTest.setColor("greene");
         carTest2 = new Car();
         carTest2.setColor("red");
@@ -31,13 +36,26 @@ public class GuavaTdd {
         carList.add(carTest2);
         carList.add(null);
 
-        colores= Arrays.asList("azul","red");
+        colores = Arrays.asList("azul", "red");
+
+        Camioneta camioneta = new Camioneta();
+        camioneta.setColor("rojoUnico");
+        camionetas.add(camioneta);
+
+        camioneta = new Camioneta();
+        camioneta.setColor("azulUnico");
+        camionetas.add(camioneta);
+
+        camioneta = new Camioneta();
+        camioneta.setColor("amarilloUnico");
+        camionetas.add(camioneta);
+
     }
 
 
     @Test
     public void joinStrings() {
-        Assert.assertEquals("azul,red",GuavaApi.joinString(colores));
+        Assert.assertEquals("azul,red", GuavaApi.joinString(colores));
     }
 
     @Test
@@ -53,67 +71,79 @@ public class GuavaTdd {
     @Test
     public void testAddCarToHashmap() {
 
-        Map<String,Car> map = GuavaApi.createMap();
-        GuavaApi.addElementToMap(map,"key",carTest);
-        Assert.assertEquals(1,map.size());
+        Map<String, Car> map = GuavaApi.createMap();
+        GuavaApi.addElementToMap(map, "key", carTest);
+        Assert.assertEquals(1, map.size());
     }
 
 
     @Test(expected = IllegalArgumentException.class)
     public void testFilterWithPreconditions() {
 
-        Preconditions.checkArgument( Lists.newArrayList().size()>0,"must not be empty");
+        Preconditions.checkArgument(Lists.newArrayList().size() > 0, "must not be empty");
     }
 
 
     @Test
     public void testPrecoditionsOk() {
-        Preconditions.checkArgument(carList.size()>0,"must not be empty");
+        Preconditions.checkArgument(carList.size() > 0, "must not be empty");
     }
 
     @Test
     public void filterlist() {
-        Assert.assertEquals(2,GuavaApi.filterNullList(carList).size());
-        Assert.assertEquals("greene",GuavaApi.filterNullList(carList).get(0).getColor());
+        Assert.assertEquals(2, GuavaApi.filterNullList(carList).size());
+        Assert.assertEquals("greene", GuavaApi.filterNullList(carList).get(0).getColor());
     }
 
 
     @Test
     public void testCustomPredicate() {
-        Assert.assertEquals(1,GuavaApi.filterCarByColor(carList).size());
-        Assert.assertEquals("red",GuavaApi.filterCarByColor(carList).get(0).getColor());
+        Assert.assertEquals(1, GuavaApi.filterCarByColor(carList).size());
+        Assert.assertEquals("red", GuavaApi.filterCarByColor(carList).get(0).getColor());
     }
 
     @Test
     public void testAllCarsHasColors() {
-        Assert.assertEquals(false,GuavaApi.allCarsHasColor(carList));
-        Assert.assertEquals(true, GuavaApi.allCarsHasColor( GuavaApi.filterNullList(carList)));
+        Assert.assertEquals(false, GuavaApi.allCarsHasColor(carList));
+        Assert.assertEquals(true, GuavaApi.allCarsHasColor(GuavaApi.filterNullList(carList)));
     }
 
 
     @Test
     public void testConvertToCamioneta() {
-       Assert.assertEquals(2, GuavaApi.convertToCamioneta( GuavaApi.filterNullList(carList)).size());
-       Assert.assertEquals(Camioneta.class.getSimpleName(), GuavaApi.convertToCamioneta( GuavaApi.filterNullList(carList)).get(0).getClass().getSimpleName());
+        Assert.assertEquals(2, GuavaApi.convertToCamioneta(GuavaApi.filterNullList(carList)).size());
+        Assert.assertEquals(Camioneta.class.getSimpleName(), GuavaApi.convertToCamioneta(GuavaApi.filterNullList(carList)).get(0).getClass().getSimpleName());
     }
 
 
     @Test
     public void testConvertToCar() {
         Assert.assertNotNull(GuavaApi.convertToCar(Arrays.asList(new Camioneta())));
-        Assert.assertEquals(GuavaApi.convertToCar(Arrays.asList(new Camioneta())).size(),1);
+        Assert.assertEquals(GuavaApi.convertToCar(Arrays.asList(new Camioneta())).size(), 1);
         Assert.assertNull(GuavaApi.convertToCar(Arrays.asList(new Camioneta())).get(0).getColor());
     }
 
     @Test
     public void testComposeFunctionsToKnowIFAnyhasRedColor() {
         Assert.assertEquals(2, GuavaApi.anyHasResColor(GuavaApi.filterNullList(carList)).size());
-        Assert.assertThat(GuavaApi.anyHasResColor(GuavaApi.filterNullList(carList)),contains(false,true));
+        Assert.assertThat(GuavaApi.anyHasResColor(GuavaApi.filterNullList(carList)), contains(false, true));
     }
 
     @Test
     public void listIsNull() {
-        List<String> colors=null;
+        List<String> colors = null;
         GuavaApi.listIsNull(colors);
+    }
+
+    @Test
+    public void testMapToList() {
+        Map res = GuavaApi.convertToMap(camionetas, new Function<Camioneta, String>() {
+            @Override
+            public String apply(Camioneta input) {
+                return input.getColor();
+            }
+        });
+
+        Assert.assertNotNull(res);
     }
 }
