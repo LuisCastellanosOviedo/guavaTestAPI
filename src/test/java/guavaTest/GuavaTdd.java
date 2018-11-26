@@ -2,6 +2,7 @@ package guavaTest;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Before;
@@ -137,12 +138,7 @@ public class GuavaTdd {
 
     @Test
     public void testMapToList() {
-        Map<String, Camioneta>  res = GuavaApi.convertToMap(camionetas, new Function<Camioneta, String>() {
-            @Override
-            public String apply(Camioneta input) {
-                return input.getColor();
-            }
-        });
+        Map<String, Camioneta>  res = GuavaApi.convertToMap(camionetas, functionCamionetaToString());
 
         Assert.assertNotNull(res);
         Assert.assertEquals(res.size(),3);
@@ -152,19 +148,9 @@ public class GuavaTdd {
 
     @Test
     public void testtransformMap() {
-        Map<String, Camioneta>  res = GuavaApi.convertToMap(camionetas, new Function<Camioneta, String>() {
-            @Override
-            public String apply(Camioneta input) {
-                return input.getColor();
-            }
-        });
+        Map<String, Camioneta>  res = GuavaApi.convertToMap(camionetas, functionCamionetaToString());
 
-        Map<String,String> restransformed = GuavaApi.transformmap(res, new Function<Camioneta, String>() {
-            @Override
-            public String apply(Camioneta input) {
-                return input.getColor();
-            }
-        });
+        Map<String,String> restransformed = GuavaApi.transformmap(res, functionCamionetaToString());
 
         Assert.assertNotNull(restransformed);
         Assert.assertEquals(restransformed.get("rojoUnico"),"rojoUnico");
@@ -172,8 +158,49 @@ public class GuavaTdd {
 
     }
 
+    @Test
+    public void testTranformEntries() {
+        Map<String,String> res = GuavaApi.tranformEntries(GuavaApi.convertToMap(camionetas,functionCamionetaToString()),functionCamionetaToString());
+
+        Assert.assertNotNull(res);
+        Assert.assertEquals(res.get("rojoUnico"),"rojoUnicorojoUnico");
+        Assert.assertEquals(res.size(),3);
+    }
+
+    private Function<Camioneta, String> functionCamionetaToString() {
+        return new Function<Camioneta, String>() {
+            @Override
+            public String apply(Camioneta input) {
+                return input.getColor();
+            }
+        };
+    }
 
 
+    @Test
+    public void testMultiMap() {
+        ArrayListMultimap<String,String> multiMap = ArrayListMultimap.create();
+        multiMap.put("Foo" , "a");
+        multiMap.put("Foo" , "b");
+        multiMap.put("Foo" , "c");
 
+        List<String> expected = Arrays.asList("a","b","c");
 
+        Assert.assertEquals(multiMap.get("Foo"),expected);
+
+    }
+
+    @Test
+    public void testMultiMapDuplicatedKeys() {
+        ArrayListMultimap<String,String> multiMap = ArrayListMultimap.create();
+        multiMap.put("Foo" , "a");
+        multiMap.put("Foo" , "b");
+        multiMap.put("Foo" , "c");
+        multiMap.put("Foo" , "c");
+
+        List<String> expected = Arrays.asList("a","b","c","c");
+
+        Assert.assertEquals(multiMap.get("Foo"),expected);
+
+    }
 }

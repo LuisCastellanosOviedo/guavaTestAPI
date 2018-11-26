@@ -10,18 +10,8 @@ import java.util.Map;
 public class GuavaApi {
 
 
-
-
-
     public static Map<String,Car> createMap(){
-        for (int i = 0; i <50 ; i++) {
-            System.out.println("test rebase ");
-        }
         return Maps.newHashMap();
-    }
-
-    public void testRebase(){
-
     }
 
     public static void addElementToMap(Map<String, Car> map, String key, Car carTest) {
@@ -78,6 +68,15 @@ public class GuavaApi {
 
     public static Map<String,String> transformmap(Map<String,Camioneta> camionetasMap,Function<Camioneta,String> camionetaToString){
         return Maps.transformValues(camionetasMap,camionetaToString);
+    }
+
+    public static Map<String,String> tranformEntries(Map<String,Camioneta> camionetasMap,Function<Camioneta,String> camionetaToString){
+        return Maps.transformEntries(transformmap(camionetasMap, camionetaToString), new Maps.EntryTransformer<String, String, String>() {
+            @Override
+            public String transformEntry(String key, String value) {
+                return key+value;
+            }
+        });
     }
 
 }
