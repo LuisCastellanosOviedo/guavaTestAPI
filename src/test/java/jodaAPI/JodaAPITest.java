@@ -2,6 +2,8 @@ package jodaAPI;
 
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+
 public class JodaAPITest {
 
 
@@ -39,5 +41,32 @@ public class JodaAPITest {
     @Test
     public void getLocalDateAmericaChicagoTimeZone() {
         System.out.println(" local Date america chicago --> "+ JodaAPI.getLocalDateAddingAmericaChicagoTimeZone());
+    }
+
+
+    @Test
+    public void printDate() {
+        System.out.println("now"+LocalDateTime.now());
+        System.out.println("tolocalDate"+LocalDateTime.now().toLocalDate());
+    }
+
+    @Test
+    public void testIsAfterPayDay() {
+        System.out.println("testIsAfterPayDay -->"+JodaAPI.isAfterPayDay(org.joda.time.LocalDateTime.now().toDateTime()));
+    }
+
+    @Test
+    public void testShowDaysToNextYear() {
+        System.out.println("testShowDaysToNextYear --> "+JodaAPI.daysToNextYear(org.joda.time.LocalDateTime.now().toDateTime().toLocalDate()).getDays());
+    }
+
+    @Test
+    public void testIsRentalOverdue() {
+        System.out.println("testIsRentalOverdue --> "+JodaAPI.isRentalOverDue(org.joda.time.LocalDateTime.now().toDateTime().minusYears(2)));
+    }
+
+    @Test
+    public void testPrintDateAsText() {
+        System.out.println("testPrintDateAsText --> "+ JodaAPI.getDateAsText(org.joda.time.LocalDateTime.now().toDateTime().toLocalDate()));
     }
 }

@@ -2,6 +2,8 @@ package jodaAPI;
 
 import org.joda.time.*;
 
+import java.util.Locale;
+
 public class JodaAPI {
 
     /**
@@ -34,5 +36,29 @@ public class JodaAPI {
 
     public static LocalDate getLocalDateAddingAmericaChicagoTimeZone(){
         return LocalDate.now(DateTimeZone.forID("America/Chicago"));
+    }
+
+
+    public static boolean isAfterPayDay(DateTime dateTime){
+        if(dateTime.getMonthOfYear() == 2){
+            return dateTime.getDayOfMonth() > 26;
+        }
+
+        return dateTime.getDayOfMonth() > 28 ;
+    }
+
+    public static Days daysToNextYear(LocalDate today){
+        LocalDate nextYear = today.plusYears(1).withDayOfYear(1);
+        return Days.daysBetween(today,nextYear);
+    }
+
+    public static Boolean isRentalOverDue(DateTime dateTimeRented){
+        Period rentalPeriod = new Period().withDays(2).withHours(12);
+        return dateTimeRented.plus(rentalPeriod).isBeforeNow();
+    }
+
+    public static String getDateAsText(LocalDate dateToFormat){
+        return dateToFormat.monthOfYear().getAsText(Locale.ENGLISH);
+
     }
 }
