@@ -1,8 +1,13 @@
 package jodaAPI;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class JodaAPITest {
 
@@ -68,5 +73,36 @@ public class JodaAPITest {
     @Test
     public void testPrintDateAsText() {
         System.out.println("testPrintDateAsText --> "+ JodaAPI.getDateAsText(org.joda.time.LocalDateTime.now().toDateTime().toLocalDate()));
+    }
+
+
+    @Test
+    public void testLambda() {
+        Integer sum = Arrays.asList(1,2,3,4).stream().reduce(0,(x,y)-> x+y);
+
+        List<Integer> numbers =new ArrayList<Integer>();
+
+        numbers.add(1);
+        numbers.add(2);
+
+
+        System.out.println(numbers);
+
+
+        numbers.add(0,5);
+
+        System.out.println(numbers);
+
+        System.out.println(sum);
+
+    }
+
+
+    @Test
+    public void seniorPerson() {
+
+        LocalDate birthDay = LocalDate.now().minusYears(65);
+        LocalDate now = LocalDate.now();
+        System.out.println( Years.yearsBetween(birthDay,now).isGreaterThan(Years.years(65)));
     }
 }

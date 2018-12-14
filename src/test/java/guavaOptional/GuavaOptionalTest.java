@@ -1,6 +1,7 @@
 package guavaOptional;
 
 import com.google.common.base.Optional;
+import guavaOptional.domain.Pizza;
 import guavaTest.Car;
 import org.junit.Assert;
 import org.junit.Before;
@@ -44,6 +45,36 @@ public class GuavaOptionalTest {
     public void testMayBeNullButIsValid() {
         Assert.assertTrue(guavaOptionalAPI.mayReturnNull("val").isPresent());
         Assert.assertEquals(guavaOptionalAPI.mayReturnNull("val").orNull(),"val");
+    }
+
+
+    @Test
+    public void shouldSetVegetableTasteHateIF() {
+
+        // GIVEN
+        Pizza pizza = null;
+        Optional<Pizza> pizzaOpt = Optional.of(pizza);
+
+
+
+
+        // Hate IF :(
+        if(!pizzaOpt.isPresent()){
+            pizza = new Pizza();
+        }
+        pizza.setTaste("Vegetables :( ");
+
+
+        Assert.assertEquals("Vegetables :( ",pizza.getTaste());
+
+//######################################################################################
+
+        //NO IF YAHOOOO :)
+        pizza = pizzaOpt.or(new Pizza());
+        pizza.setTaste("Vegetables :( ");
+
+        Assert.assertEquals("Vegetables :( ",pizza.getTaste());
+
     }
 
 
