@@ -1,6 +1,7 @@
 package guavaTest;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 public class FeaturePredicates {
 
@@ -23,6 +24,11 @@ public class FeaturePredicates {
                 return input!=null && input.getColor()!=null && !input.getColor().isEmpty();
             }
         };
+    }
+
+
+    public static Predicate mixPredicate(){
+        return Predicates.and(carColorPredicate(),allCarsHasColor());
     }
 
 }
