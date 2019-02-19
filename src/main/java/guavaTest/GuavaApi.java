@@ -67,6 +67,7 @@ public class GuavaApi {
     }
 
     public static Map<String,String> transformmap(Map<String,Camioneta> camionetasMap,Function<Camioneta,String> camionetaToString){
+
         return Maps.transformValues(camionetasMap,camionetaToString);
     }
 
